@@ -326,8 +326,15 @@ img {
 }
 
 #intro {
-  background: $white;
+  background-blend-mode: lighten;
+  background-image: url("../img/video-img.jpg");
   height: 1080px;
+  padding-top: 80px;
+
+  @media (min-width: 767px) {
+    padding-top: 150px;
+  }
+
 
   h1 {
     color: #3c3c3c;
@@ -379,30 +386,6 @@ img {
   .video-content {
     max-height: 1080px;
     min-height: 1080px;
-  }
-}
-
-.container-wrapper {
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 150px;
-}
-
-@media (max-width: 700px) {
-  .container-wrapper {
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 70px;
-  }
-
-  .video-content h3 {
-    font-size: 32px !important;
-    font-weight: 600;
-    text-align: center;
   }
 }
 
@@ -1097,60 +1080,6 @@ h1.section-title {
   line-height: 24px;
   padding: 30px 0;
   position: relative;
-}
-
-#page-name {
-  background: url('../img/video-img.jpg') center center no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  padding: 160px 0 120px;
-  position: relative;
-  text-align: center;
-
-  h1 {
-    font-size: 58px;
-    margin-bottom: 46px;
-    text-transform: uppercase;
-
-    &:after {
-      background: $highlight-color;
-      content: '';
-      display: block;
-      height: 2px;
-      left: 50%;
-      margin-left: -20px;
-      margin-top: 25px;
-      position: relative;
-      width: 40px;
-    }
-  }
-}
-
-#page-404 {
-  background: url('../img/404-page-bg.jpg') top center no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  -webkit-font-smoothing: subpixel-antialiased;
-  min-height: 100%;
-  position: relative;
-  width: 100%;
-}
-
-.page-404-container {
-  display: inline-block;
-  left: 50%;
-  position: absolute;
-  top: 46%;
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-
-  h1 {
-    font-size: 232px;
-    font-weight: 400;
-  }
 }
 
 .wp1,
