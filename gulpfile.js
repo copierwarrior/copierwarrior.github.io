@@ -7,6 +7,7 @@ var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var gutil = require('gulp-util');
 var sequence = require('run-sequence');
+var purify = require('gulp-purifycss');
 
 gulp.task('default', function(done) {
   sequence('sass', 'js', 'jekyll:serve', 'sass:watch', 'js:watch', done);
@@ -31,10 +32,22 @@ gulp.task('sass', function() {
         './bower_components/bootstrap-sass/assets/stylesheets',
         './bower_components/font-awesome/scss',
         './bower_components/owl-carousel-sass/owl-carousel/scss'
-      ],
-      outputStyle: 'compressed'
+      ]
     })
     .on('error', sass.logError))
+    .pipe(purify(['./index.html']), {
+      minify: true,
+      whitelist: [
+        '*bounceInLeft*',
+        '*bounceInRight*',
+        '*fadeInUp*',
+        '*fadeInUpDelay*',
+        '*fadeInDown*',
+        '*fadeInUp*',
+        '*fadeInLeft*',
+        '*fadeInRight*'
+      ]
+    })
     .pipe(gulp.dest('./css'))
     .pipe(filelog());
 });
