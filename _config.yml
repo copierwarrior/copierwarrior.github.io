@@ -1,0 +1,16 @@
+title: Dale Dupree | Copier Warrior
+description:
+url: http://www.copierwarrior.com
+markdown: kramdown
+exclude:
+- bower_components
+- node_modules
+- Gemfile*
+- bower.json
+- gulpfile.js
+- package.json
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
