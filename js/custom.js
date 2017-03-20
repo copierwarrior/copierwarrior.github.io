@@ -41,112 +41,67 @@
     mouseDrag: true
   });
 
-  $('#counters').waypoint(function() {
-    $('#counter-1').animateNumber({
-      number: 10000
-    }, 2000);
-    $('#counter-2').animateNumber({
-      number: 3
-    }, 2000);
-    $('#counter-3').animateNumber({
-      number: 999
-    }, 2000);
-    this.destroy()
+  var $counters = $('#counters');
+  $counters.waypoint(function() {
+    $counters.find('span').each(function() {
+      var $this = $(this);
+      $this.animateNumber({
+        number: $this.data('amount')
+      }, 2000);
+    });
+    this.destroy();
   }, {
     offset: '100%'
   });
 
-  $('#expand-counters').waypoint(function() {
-    $('#expand-counter-1').animateNumber({
-      number: 98
-    }, 3000);
-    $('#expand-counter-2').animateNumber({
-      number: 72
-    }, 3000);
-    $('#expand-counter-3').animateNumber({
-      number: 84
-    }, 3000);
-    $('#expand-counter-4').animateNumber({
-      number: 67
-    }, 3000);
-    this.destroy()
+  var $features = $('.features-wrap');
+  $features.waypoint(function() {
+    $features.find('li').each(function() {
+      var $this = $(this).find('div');
+      $this.find('span').css('width', $this.data('amount') + '%');
+      $this.find('b').animateNumber({
+        number: $this.data('amount')
+      }, 3000);
+    });
+    this.destroy();
   }, {
     offset: '100%'
   });
 
-  $('.features-wrap').waypoint(function() {
-    $('.expand-1').css('width', '94%');
-    $('.expand-2').css('width', '72%');
-    $('.expand-3').css('width', '86%');
-    $('.expand-4').css('width', '64%');
-    this.destroy()
-  }, {
-    offset: '100%'
-  });
 
   $('.wp1').waypoint(function() {
     $('.wp1').addClass('animated fadeInDown');
-    this.destroy()
+    this.destroy();
   }, {
     offset: '75%'
   });
   $('.wp2').waypoint(function() {
     $('.wp2').addClass('animated fadeInUp');
-    this.destroy()
+    this.destroy();
   }, {
     offset: '75%'
   });
   $('.wp3').waypoint(function() {
     $('.wp3').addClass('animated fadeInDown');
-    this.destroy()
+    this.destroy();
   }, {
     offset: '55%'
   });
   $('.wp4').waypoint(function() {
     $('.wp4').addClass('animated fadeInUp');
-    this.destroy()
+    this.destroy();
   }, {
     offset: '75%'
   });
   $('.wp5').waypoint(function() {
     $('.wp5').addClass('animated fadeInUp');
-    this.destroy()
+    this.destroy();
   }, {
     offset: '75%'
   });
   $('.wp6').waypoint(function() {
     $('.wp6').addClass('animated fadeInUp');
-    this.destroy()
-  }, {
-    offset: '75%'
-  });
-  $('.wp7').waypoint(function() {
-    $('.wp7').addClass('animated fadeInDown');
-    this.destroy()
-  }, {
-    offset: '75%'
-  });
-  $('.wp8').waypoint(function() {
-    $('.wp8').addClass('animated fadeInUp');
-    this.destroy()
-  }, {
-    offset: '100%'
-  });
-  $('.wp9').waypoint(function() {
-    $('.wp9').addClass('animated fadeInDown');
-    this.destroy()
-  }, {
-    offset: '100%'
-  });
-  $('.wp10').waypoint(function() {
-    $('.wp10').addClass('animated fadeInLeft');
-    this.destroy()
-  }, {
-    offset: '100%'
-  });
-  $('.wp11').waypoint(function() {
-    $('.wp11').addClass('animated fadeInUp');
-    this.destroy()
+    this.destroy();
   }, {
     offset: '75%'
   });
