@@ -50,4 +50,6 @@ does:
     subheading: ''
     image: img/dale-copierwarrior-copierleases.jpg
 date: 2017-11-26 16:44:49 +0000
+selling_local_podcast: Testing new front-matter template
 ---
+    <script class="podigee-podcast-player" src="build/javascripts/podigee-podcast-player.js" data-configuration="../example/config.json"></script>
