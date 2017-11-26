@@ -2,7 +2,7 @@
 pages:
 - selling-local-podcast.md
 - _posts/2017-11-26-selling-local-podcast-1.md
-hide_body: false
+hide_body: true
 fields:
 - type: text
   name: selling_local_podcast
