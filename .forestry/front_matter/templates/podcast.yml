@@ -1,0 +1,9 @@
+---
+hide_body: false
+fields:
+- type: text
+  name: selling_local_podcast
+  label: Selling Local Podcast
+  config:
+    required: false
+  default: Testing new front-matter template
