@@ -1,4 +1,6 @@
 ---
+pages:
+- selling-local-podcast.md
 hide_body: false
 fields:
 - name: layout
