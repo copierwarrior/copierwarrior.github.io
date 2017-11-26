@@ -1,6 +1,8 @@
 ---
-title: Selling Local Podcast
-selling_local_podcast: Testing new front-matter template
-date: 2017-11-26 17:22:21 +0000
+bio: 'Testing Podcast'
+
+title: The Copier Warrior
+twitter: CopierWarrior
+youtube: https://www.youtube.com/embed/_BxlIV-9xjM
+youtube_channel: https://youtube.com/channel/UC-BqyrLcd1uRE9zjAZuFDeg
 ---
-Testing Podcast
