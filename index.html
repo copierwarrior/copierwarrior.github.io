@@ -96,3 +96,185 @@ twitter: CopierWarrior
 youtube: https://www.youtube.com/embed/_BxlIV-9xjM
 youtube_channel: https://youtube.com/channel/UC-BqyrLcd1uRE9zjAZuFDeg
 ---
+
+<section id="intro">
+  <div class="video-content">
+    <div class="container">
+      <div class="col-lg-10 col-lg-offset-1 wp5 delay-05s">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe src="{{ page.youtube }}"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-md-12 wp1 delay-05s">
+        <br><br>
+        <div class="intro-info-wrapper">
+          <h2 class="text-center">Connect With The <span class="text-color font-light">Copier Warrior</span> Here!</h2>
+          <p class="text-center">Connect with <span class="text-color font-light"><a href="http://www.twitter.com/{{ page.twitter | downcase }}">@{{ page.twitter }}</a></span> using any of the links below and meet with the one and only <strong>Dale Dupree!</strong></p>
+        </div>
+      </div>
+      <div class="col-lg-12 wp1">
+        <ul class="social-buttons">
+          <li><strong>Text Me</strong><br/><a href="sms:+1{{ mobile }}?body=Let%27s%20do%20lunch.%20Please%20call%20me."><span>{{ page.mobile }}</span></a></li>
+          <li><a href="https://twitter.com/{{ page.twitter | downcase }}"><i class="fa fa-twitter fa-fw"></i> <span>Twitter</span></a></li>
+          <li><a href="https://www.facebook.com/{{ page.facebook }}?fret=ts"><i class="fa fa-facebook fa-fw"></i> <span>Facebook</span></a></li>
+          <li><a href="{{ page.youtube_channel }}"><i class="fa fa-youtube fa-fw"></i> <span>YouTube</span></a></li>
+          <li><strong>Email Me</strong><br/><a href="mailto:{{ page.email }}"><span>Send Message</span></a></li>
+        </ul>
+      </div>
+      <div class="col-md-12 wp1 delay-05s hidden-xs">
+        <br><br>
+        <div class="intro-info-wrapper">
+          <h2 class="text-center"><span class="text-color font-light">Scroll Down</span> For More Fun Facts!</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="about">
+  <div style="margin-top:20px" class="more page-scroll" id="more">
+    <a href="#about"><i class="fa fa-angle-down"></i></a>
+  </div>
+  <div class="container wp2">
+    <h1 class="section-title">Who Is Dale Dupree</h1>
+    <div class="row">
+      <div class="col-md-6 wp2 delay-05s">
+        <div class="movie-avatar-img">
+          <img src="img/dale-copywarrior-001.jpg" alt="Dale with lightsaber">
+        </div>
+      </div>
+      <div class="col-md-6 wp2 delay-1s">
+        <h2>{{ page.fullname }} <span class="text-color">{{ page.title }}</span></h2>
+        <h4 class="sub-text">{{ page.tagline }}</h4>
+        <table class="text-dark">
+          <tr>
+            <td>Office</td>
+            <td>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+            <td><a href="tel:{{ office }}">{{ page.office }}</a></td>
+          </tr>
+          <tr>
+            <td>Cell</td>
+            <td>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+            <td><a href="tel:{{ page.mobile | remove: '(' | remove: ')' | remove: ' ' | remove: '-' }}">{{ page.mobile }}</a></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+            <td><a href="mailto:{{ page.email }}">{{ page.email }}</a></td>
+          </tr>
+          <tr>
+            <td>Fact</td>
+            <td>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+            <td>{{ page.fact }}</td>
+          </tr>
+        </table>
+        <br>
+        <p>{{ page.bio }}</p>
+        <br>
+        <div class="detailed">
+          Daily Hive fives:&nbsp;&nbsp;
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-o"></i>
+          <span>Five'ing Effectiveness &nbsp;<b>/  4.5</b></span>
+        </div>
+        <p></p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="about-sub">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-md-9 wp3 delay-05s">
+        <h2 class="sub-title">{{ page.details.header }}</h2>
+        <p>{{ page.details.body }}</p>
+        <ul class="feature-list">
+          {% for feature in page.details.features %}
+          <li><em class="fa fa-{{ feature.type }}"></em> {{ feature.text }}</li>
+          {% endfor %}
+        </ul>
+        <p><span class="text-color">//</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;So many more bullet points to add here. You can call me any time at <a href="tel:{{ mobile }}">{{ page.mobile }}</a> to ask about them.</p>
+      </div>
+      <div class="col-lg-3 col-md-3" id="counters">
+        <ul class="counters wp3">
+          {% for counter in page.counters %}
+          <li>
+            <span data-amount="{{ counter.count }}">0</span>
+            <h5>{{ counter.subject }}</h5>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="features">
+  <div class="container">
+    <div class="row">
+      <div id="expand-counters" class="col-md-6 features wp4">
+        <h2 class="sub-title">{{ page.feature.title }}</h2>
+        <ul class="features-wrap">
+          {% for item in page.feature.percentages %}</h2>
+          <li>
+            <h6>{{ item.title}}</h6>
+            <div data-amount="{{ item.percent }}"><span class="expand"><em><b></b>%</em></span></div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col-md-6 wp4 delay-05s">
+        <div class="panel-group" id="accordion">
+          {% for person in page.testimonials %}
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.index }}"><span class="glyphicon glyphicon-minus"></span> Testimonial: <strong style="color:#7D7D7D">{{ person.name }}</strong></a></h4>
+            </div>
+            <div id="collapse{{ forloop.index }}" class="panel-collapse collapse{% if forloop.first %} in{% endif %}">
+              <div class="panel-body">
+                <strong>{{ person.title }}</strong>
+                <br/><br/>
+                <em>{{ person.quote }}</em>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="actors">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="section-title">{{ page.does.title }}</h1>
+        <div id="owl-actors" class="owl-carousel owl-theme">
+          {% for item in page.does.abilities %}</h2>
+          <div class="item">
+            <div class="col-md-12 wp6{% if forloop.index == 2 %} delay-05s{% elsif forloop.index == 3 %} delay-1s{% endif %}">
+              <div class="actor">
+                <div class="avatar">
+                  <img alt="img" src="{{ item.image }}">
+                </div>
+                <div class="details">
+                  <h5><em>More Details Call</em><br/><a href="tel:{{ mobile }}">{{ page.mobile }}</a></h5>
+                  <h5>Message Me</h5>
+                  <a href="mailto:{{ page.email }}">Send Email Now</a>
+                </div>
+              </div>
+              <div class="actor-info">
+                <h4 class="heading">{{ item.heading }}</h4>
+                <h5 class="sub-heading">{{ item.subheading }}</h5>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
