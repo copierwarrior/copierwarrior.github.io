@@ -1,37 +1,23 @@
-var child = require('child_process');
-var gulp = require('gulp');
-var concat = require('gulp-concat');
-var filelog = require('gulp-filelog');
-var htmlmin = require('gulp-htmlmin');
-var sass = require('gulp-sass');
-var uglify = require('gulp-uglify');
-var gutil = require('gulp-util');
-var sequence = require('run-sequence');
-var purify = require('gulp-purifycss');
+import { watch, src, dest, series } from 'gulp';
+import { spawn } from 'child_process';
+import concat from 'gulp-concat';
+import filelog from 'gulp-filelog';
+import htmlmin from 'gulp-htmlmin';
+import * as dartSass from 'sass';
+import gulpSass from 'gulp-sass';
+const sass = gulpSass(dartSass);
+import uglify from 'gulp-uglify';
+import purify from 'gulp-purifycss';
+import { default as log } from 'fancy-log';
 
-gulp.task('default', function(done) {
-  sequence('sass', 'js', 'jekyll:serve', 'sass:watch', 'js:watch', done);
-});
-
-gulp.task('build', function(done) {
-  sequence('sass', 'fonts', 'js', 'jekyll', 'html-minify', done);
-});
-
-gulp.task('fonts', function() {
-  gulp.src('./bower_components/bootstrap-sass/assets/fonts/bootstrap/**.*')
-    .pipe(gulp.dest('./fonts/bootstrap'));
-  return gulp.src('./bower_components/font-awesome/fonts/**.*')
-    .pipe(gulp.dest('./fonts'));
-});
-
-gulp.task('sass', function() {
-  // Compile SASS.
-  return gulp.src('./css/style.scss')
+// Compile SASS.
+export const sassCompile = () => src('./_css/style.scss')
     .pipe(sass({
       includePaths: [
-        './bower_components/bootstrap-sass/assets/stylesheets',
-        './bower_components/font-awesome/scss',
-        './bower_components/owl-carousel-sass/owl-carousel/scss'
+        './_css',
+        './node_modules/bootstrap/scss',
+        './node_modules/font-awesome/scss',
+        './node_modules/owl-carousel-legacy/css'
       ]
     })
     .on('error', sass.logError))
@@ -48,49 +34,40 @@ gulp.task('sass', function() {
         '*fadeInRight*'
       ]
     })
-    .pipe(gulp.dest('./css'))
+    .pipe(dest('./css'))
     .pipe(filelog());
-});
 
-gulp.task('sass:watch', function() {
-  gulp.watch('./css/**/*.scss', ['sass']);
-});
+export const sassWatch = () => watch('./_css/**/*.scss', sassCompile);
 
-gulp.task('js', function() {
-  // Compile JS.
-  return gulp.src([
-    './bower_components/jquery/jquery.js',
-    './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
-    './bower_components/jquery.easing/js/jquery.easing.js',
-    './bower_components/owl-carousel-sass/owl-carousel/owl.carousel.js',
-    './bower_components/jquery-animateNumber/jquery.animateNumber.js',
-    './bower_components/waypoints/lib/jquery.waypoints.js',
+// Compile JS.
+export const jsCompile = () => src([
+    './node_modules/jquery/src/jquery.js',
+    './node_modules/bootstrap/dist/js/bootstrap.js',
+    './node_modules/jquery.easing/jquery.easing.js',
+    './node_modules/owl-carousel-legacy/owl.carousel.js',
+    './node_modules/jquery.animate-number/jquery.animateNumber.js',
+    './node_modules/waypoints/lib/jquery.waypoints.js',
     './js/custom.js'
     ])
     .pipe(concat('script.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('js'))
+    .pipe(dest('js'))
     .pipe(filelog());
-});
 
-gulp.task('js:watch', function() {
-  gulp.watch('./_js/**/*.js', ['js']);
-});
+export const jsWatch = () => watch('./_js/**/*.js', jsCompile);
 
-gulp.task('html-minify', function() {
-  return gulp.src('_site/**/*.html')
+export const htmlMinify = () => src('_site/**/*.html')
     .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest('_site'));
-});
+    .pipe(dest('_site'));
 
-gulp.task('jekyll', function(gulpCallback) {
-  const jekyll = child.spawn('jekyll', ['build']);
+export const jekyll = (gulpCallback) => {
+  const jekyll = spawn('jekyll', ['build']);
 
   const jekyllLogger = function(buffer) {
     buffer.toString()
       .split(/\n/)
       .forEach(function(message) {
-        gutil.log('Jekyll: ' + message);
+        log('Jekyll: ' + message);
       });
   };
 
@@ -98,19 +75,22 @@ gulp.task('jekyll', function(gulpCallback) {
   jekyll.stderr.on('data', jekyllLogger);
 
   jekyll.on('exit', gulpCallback);
-});
+}
 
-gulp.task('jekyll:serve', function() {
-  const jekyll = child.spawn('jekyll', ['serve']);
+export const jekyllServe = () => {
+  const jekyll = spawn('jekyll', ['serve']);
 
   const jekyllLogger = function(buffer) {
     buffer.toString()
       .split(/\n/)
       .forEach(function(message) {
-        gutil.log('Jekyll: ' + message);
+        log('Jekyll: ' + message);
       });
   };
 
   jekyll.stdout.on('data', jekyllLogger);
   jekyll.stderr.on('data', jekyllLogger);
-});
+}
+
+export const build = series(sassCompile, jsCompile, jekyll, htmlMinify);
+export default series(sassCompile, jsCompile, jekyllServe, sassWatch, jsWatch);
