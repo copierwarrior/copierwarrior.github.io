@@ -2,7 +2,7 @@
   'use strict';
 
   // jQuery to collapse the navbar on scroll
-  $(window).scroll(function() {
+  $(window).on('scroll', function() {
     if ($('.navbar').offset().top > 50) {
       $('.navbar-fixed-top').addClass('top-nav-collapse');
     } else {
@@ -11,10 +11,11 @@
   });
 
   // Page anchor scroll.
-  $('.page-scroll a').bind('click', function(event) {
-    var $anchor = $(this);
+  $('.page-scroll a').on('click', function(event) {
+    const $anchor = $(this);
+
     $('html, body').stop().animate({
-      scrollTop: $($anchor.attr('href')).offset().top
+      scrollTop: $($anchor.attr('href').replace('/', '')).offset().top
     }, 800, 'easeInOutExpo');
     event.preventDefault();
   });
@@ -41,10 +42,11 @@
     mouseDrag: true
   });
 
-  var $counters = $('#counters');
+  const $counters = $('#counters');
+
   $counters.waypoint(function() {
     $counters.find('span').each(function() {
-      var $this = $(this);
+      const $this = $(this);
       $this.animateNumber({
         number: $this.data('amount')
       }, 2000);
@@ -54,10 +56,10 @@
     offset: '100%'
   });
 
-  var $features = $('.features-wrap');
+  const $features = $('.features-wrap');
   $features.waypoint(function() {
     $features.find('li').each(function() {
-      var $this = $(this).find('div');
+      const $this = $(this).find('div');
       $this.find('span').css('width', $this.data('amount') + '%');
       $this.find('b').animateNumber({
         number: $this.data('amount')

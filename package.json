@@ -2,41 +2,34 @@
   "name": "copierwarrior.com",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
-  "main": "gulpfile.js",
-  "dependencies": {
-    "fancy-log": "^2.0.0",
-    "gulp-purifycss": "^0.2.0",
-    "purify-css": "^1.1.9",
-    "sass": "^1.83.0"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "bootstrap": "^5.3.3",
+    "@fullhuman/postcss-purgecss": "^6.0.0",
     "child_process": "^1.0.2",
-    "font-awesome": "^4.7.0",
+    "cssnano": "^7.0.0",
+    "fancy-log": "^2.0.0",
     "gulp": "^5.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-filelog": "^0.4.1",
-    "gulp-htmlmin": "^5.0.0",
-    "gulp-sass": "^6.0.0",
-    "gulp-uglify": "^3.0.0",
-    "jquery": "^3.7.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-postcss": "^10.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-terser": "^2.1.0",
+    "postcss": "^8.4.31",
+    "sass": "^1.69.5"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "bootstrap-sass": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "1.11",
     "jquery.animate-number": "^0.0.14",
     "jquery.easing": "^1.3.1",
     "owl-carousel-legacy": "^1.3.3",
     "waypoints": "^4.0.1"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Norstone/norstone.github.io.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Norstone/norstone.github.io/issues"
-  },
-  "homepage": "https://github.com/Norstone/norstone.github.io#readme"
+  }
 }

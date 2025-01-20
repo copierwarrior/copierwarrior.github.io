@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{% assign office = office | remove: '(' | remove: ')' | remove: ' ' | remove: '-' %}
+{% assign mobile = mobile | remove: '(' | remove: ')' | remove: ' ' | remove: '-' %}
+<html lang="en">
+  {% include "head" %}
+  <body id="page-top">
+    {% include "navigation" %}
+    {{ content }}
+    {% include "footer" %}
+  </body>
+</html>
