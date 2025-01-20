@@ -1,6 +1,7 @@
 export default function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('css');
   eleventyConfig.addPassthroughCopy({ 'node_modules/font-awesome/fonts': 'fonts' });
+  eleventyConfig.addPassthroughCopy({ 'node_modules/bootstrap-sass/assets/fonts/bootstrap': 'fonts/bootstrap' });
   eleventyConfig.addPassthroughCopy('favicon');
   eleventyConfig.addPassthroughCopy('img');
   eleventyConfig.addPassthroughCopy('js');
