@@ -83,7 +83,6 @@ export const jsProd = () => gulp.src([
       './node_modules/waypoints/lib/jquery.waypoints.min.js',
       './_js/custom.js'
     ])
-    .pipe(sourcemaps.init())
     .pipe(terser({
       toplevel: true,
       format: {
@@ -91,8 +90,7 @@ export const jsProd = () => gulp.src([
       }
     }))
     .pipe(concat('script.js'))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./_site/js'));
+    .pipe(gulp.dest('js'));
 
 export const htmlBuild = (gulpCallback) => {
   const eleventy = spawn('npx', ['@11ty/eleventy']);
