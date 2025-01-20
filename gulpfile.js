@@ -72,15 +72,7 @@ export const cssProd = () => gulp.src('./_css/style.scss')
       ],
     })
     .on('error', sass.logError))
-    .pipe(postcss([purgecss({
-        content: [
-          '_site/**/*.html',
-        ]
-      }),
-      removeComments({ removeAll: true }),
-      cssnano()
-    ]))
-    .pipe(gulp.dest('./_site/css'));
+    .pipe(gulp.dest('./css'));
 
 export const jsProd = () => gulp.src([
       './node_modules/jquery/dist/jquery.js',
