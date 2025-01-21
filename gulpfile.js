@@ -20,7 +20,6 @@ export const cssDev = () => gulp.src('./_css/style.scss')
         './_css',
         './node_modules/bootstrap-sass/assets/stylesheets',
         './node_modules/font-awesome/scss',
-        './node_modules/owl-carousel-legacy/css'
       ],
     })
     .on('error', sass.logError))
@@ -29,10 +28,9 @@ export const cssDev = () => gulp.src('./_css/style.scss')
 export const cssWatch = () => gulp.watch('./_css/**/*.scss', cssDev);
 
 export const jsDev = () => gulp.src([
-      './node_modules/jquery/dist/jquery.js',
+      './node_modules/jquery/jquery.js',
       './node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
       './node_modules/jquery.easing/jquery.easing.1.3.min.js',
-      './node_modules/owl-carousel-legacy/owl.carousel.min.js',
       './node_modules/jquery.animate-number/jquery.animateNumber.min.js',
       './node_modules/waypoints/lib/jquery.waypoints.min.js',
       './_js/custom.js'
@@ -59,8 +57,6 @@ export const htmlServe = () => {
   eleventy.stderr.on('data', htmlLogger);
 };
 
-export const dev = gulp.series(cssDev, jsDev, gulp.parallel(htmlServe, cssWatch, jsWatch));
-
 // Prod
 export const cssProd = () => gulp.src('./_css/style.scss')
     .pipe(sass({
@@ -68,17 +64,15 @@ export const cssProd = () => gulp.src('./_css/style.scss')
         './_css',
         './node_modules/bootstrap-sass/assets/stylesheets',
         './node_modules/font-awesome/scss',
-        './node_modules/owl-carousel-legacy/css'
       ],
     })
     .on('error', sass.logError))
     .pipe(gulp.dest('./css'));
 
 export const jsProd = () => gulp.src([
-      './node_modules/jquery/dist/jquery.js',
+      './node_modules/jquery/jquery.js',
       './node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
       './node_modules/jquery.easing/jquery.easing.1.3.min.js',
-      './node_modules/owl-carousel-legacy/owl.carousel.min.js',
       './node_modules/jquery.animate-number/jquery.animateNumber.min.js',
       './node_modules/waypoints/lib/jquery.waypoints.min.js',
       './_js/custom.js'
@@ -109,6 +103,7 @@ export const htmlBuild = (gulpCallback) => {
   eleventy.on('exit', gulpCallback);
 };
 
+export const dev = gulp.series(cssProd, jsProd, gulp.parallel(htmlServe, cssWatch, jsWatch));
 export const build = gulp.series(cssProd, jsProd, htmlBuild);
 
 export default dev;

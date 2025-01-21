@@ -25,21 +25,17 @@
     $(this).parent().find('.glyphicon-minus').removeClass('glyphicon-minus').addClass('glyphicon-plus');
   });
 
-  $('#owl-actors').owlCarousel({
-    itemsCustom: [
-      [0, 1],
-      [450, 2],
-      [600, 2],
-      [700, 2],
-      [1000, 3],
-      [1200, 3],
-      [1400, 3],
-      [1600, 3]
-    ],
-    navigation: true,
-    pagination: true,
-    mouseDrag: true
-  });
+  tns({
+    container: '.owl-actor',
+    items: 1,
+    responsive: {
+      750: { items: 2 },
+      1000: { items: 3 },
+    },
+    controls: false,
+    mouseDrag: true,
+    nav: false,
+  })
 
   var $counters = $('#counters');
   $counters.waypoint(function() {
