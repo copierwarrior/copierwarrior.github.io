@@ -25,7 +25,7 @@
     $(this).parent().find('.glyphicon-minus').removeClass('glyphicon-minus').addClass('glyphicon-plus');
   });
 
-  if (document.getElementsByClassName('owl-actor') > 0) {
+  if (document.getElementsByClassName('owl-actor').length > 0) {
     tns({
       container: '.owl-actor',
       items: 1,

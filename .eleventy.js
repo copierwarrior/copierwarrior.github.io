@@ -10,6 +10,7 @@ export default function(eleventyConfig) {
   eleventyConfig.setIncludesDirectory('_includes');
   eleventyConfig.setLayoutsDirectory('_layouts');
 
+  eleventyConfig.addGlobalData('site', 'The Copier Warrior');
   eleventyConfig.addGlobalData('copyright', '&copy;' + new Date().getFullYear() + ' Copier Warrior');
   eleventyConfig.addGlobalData('email', 'dale@thesalesrebellion.com');
   eleventyConfig.addGlobalData('facebook', 'salesrebellion');
