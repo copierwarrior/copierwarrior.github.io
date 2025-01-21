@@ -11,4 +11,9 @@ export default function(eleventyConfig) {
   eleventyConfig.setLayoutsDirectory('_layouts');
 
   eleventyConfig.addGlobalData('copyright', '&copy;' + new Date().getFullYear() + ' Copier Warrior');
+  eleventyConfig.addGlobalData('email', 'dale@thesalesrebellion.com');
+  eleventyConfig.addGlobalData('facebook', 'salesrebellion');
+  eleventyConfig.addGlobalData('mobile', '(407) 719-2844');
+  eleventyConfig.addGlobalData('x', 'SalesRebellion');
+  eleventyConfig.addGlobalData('youtube_channel', 'https://youtube.com/channel/UC-BqyrLcd1uRE9zjAZuFDeg');
 };

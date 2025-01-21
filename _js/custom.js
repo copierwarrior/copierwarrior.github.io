@@ -25,17 +25,19 @@
     $(this).parent().find('.glyphicon-minus').removeClass('glyphicon-minus').addClass('glyphicon-plus');
   });
 
-  tns({
-    container: '.owl-actor',
-    items: 1,
-    responsive: {
-      750: { items: 2 },
-      1000: { items: 3 },
-    },
-    controls: false,
-    mouseDrag: true,
-    nav: false,
-  })
+  if (document.getElementsByClassName('owl-actor') > 0) {
+    tns({
+      container: '.owl-actor',
+      items: 1,
+      responsive: {
+        750: { items: 2 },
+        1000: { items: 3 },
+      },
+      controls: false,
+      mouseDrag: true,
+      nav: false,
+    });
+  }
 
   var $counters = $('#counters');
   $counters.waypoint(function() {
